@@ -278,7 +278,7 @@ function vowelsCount(Str) {
 let vowelss = prompt("Enter a string :");
 let result = vowelsCount(vowelss);
 console.log("Number of vowels in the string:", result);
-*/
+
 
 const vowelsCount = (Str) => {
     let vowels = ['a','e','i','o','u','A','E','O','I','U'];;
@@ -295,3 +295,103 @@ const vowelsCount = (Str) => {
 let str = "Abcde Fghij";
 let result = vowelsCount(str);
 console.log("Number of vowels in arrow function:", result);
+
+
+// Arrays + map
+let numbers = [1,2,3,4,5];
+let squarednumbers = numbers.map((n) => n*n);
+console.log("Squared Numbers:", squarednumbers);
+
+// Arrays + filter
+let evennumbers = numbers.filter((n) => n % 2 ===0);
+console.log("Even Numbers:", evennumbers);
+// Arrays + reduce
+let sumofnumbers = numbers.reduce((accumulator, current) => accumulator + current, 0);
+console.log("Sum of Numbers:", sumofnumbers);
+
+Answer of Exercise 1:
+
+const prices = [100,200,300];
+let pricesWithTax = prices.map((price) => price*18/100 +price);
+console.log("Prices with Tax:", pricesWithTax);
+
+
+//Answer of Exercise 2:
+
+const users = [
+    {name: "Aananaya", age: 20},
+    {name: "Rohan", age: 17},
+    {name: "Saanvi", age: 22},
+    {name: "Aditya", age: 15}
+]
+let adults = users.filter(users => users.age >= 18);
+console.log("Adult users: ", adults);
+
+
+//Answer of Exercise 3:
+
+const cart = [
+  { name: "Apple", price: 30 },
+  { name: "Milk", price: 50 },
+  { name: "Bread", price: 25 },
+];
+let totalPrice = cart.reduce((sum, n) => sum +n.price, 0);
+console.log("Total Price:", totalPrice);
+
+
+//fetch API
+fetch('https://jsonplaceholder.typicode.com/posts')
+    .then((response) => response.json())
+    .then((data) => { console.log(data); })
+    .catch((error) => {console.error('Error fetching data:', error); });
+
+//A Promise is an object that represents a value that will arrive later (success or failure).
+//fetch returns a Promise:
+
+//.then → when it succeeds
+
+//.catch → when it fail
+
+
+//Async/Await
+async function fetchData() {
+    try {
+        let response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        let data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }       
+}
+fetchData();
+
+//Pattern
+async function someName() {
+  try {
+    const res = await fetch("URL");
+    const data = await res.json();
+    // use data
+  } catch (err) {
+    // handle error
+  }
+}
+
+//Async function always returns a Promise, so you can use .then and .catch with it as well:
+//these are objects that represent the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
+//Exercise 4
+
+async function getUsers() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        const users = await response.json();
+        console.log("Length of users: ", users.length);
+        console.log("Name of the first user: ", users[0].name);
+    }
+    catch (error) {
+        console.error('Error fetching users:', error);
+    }
+} 
+getUsers();
+
+*/
